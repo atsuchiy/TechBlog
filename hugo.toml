@@ -4,6 +4,7 @@ theme = "hugo-PaperMod"
 hasCJKLanguage = true
 defaultContentLanguage = "ja"
 defaultContentLanguageInSubdir = true
+googleAnalytics = "G-WG3D1JYEXB"
 
 [params]
     env = "production"
