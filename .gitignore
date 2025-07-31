@@ -1,0 +1,24 @@
+# Hugo's public directory for generated sites
+/public/
+
+# Hugo's data directory for cache and resources
+/resources/
+
+# Hugo's archetypes and content if you don't want to commit default content
+# archetypes/
+# content/
+
+# Hugo's development server cache
+.hugo_build.lock
+.hugo_build.log
+
+# IDE and OS generated files
+.DS_Store
+.vscode/ # Visual Studio Code specific files
+*.log
+*.swp
+.idea/ # IntelliJ/WebStorm specific files
+.env # Environment variables
+
+# Node.js (if you use npm for front-end tools)
+node_modules/
