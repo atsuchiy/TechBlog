@@ -1,0 +1,35 @@
+name: Deploy Hugo site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # mainブランチへのプッシュでデプロイをトリガー
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # ビルドを実行する環境
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true # テーマをサブモジュールとして追加している場合
+          fetch-depth: 0    # .GitInfo を使用する場合
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest' # 最新のHugoバージョンを使用
+          extended: true         # Hugo Extended版が必要な場合 (Sassなど)
+
+      - name: Build Hugo site
+        run: hugo --minify # Hugoサイトをビルド (--minifyで最適化)
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3 # GitHub Pagesにデプロイするアクション
+        if: github.ref == 'refs/heads/main' # mainブランチでのみデプロイを実行
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub提供のトークン
+          publish_dir: ./public # Hugoのビルド成果物があるディレクトリ
+          # cname: yourdomain.com # カスタムドメインを使う場合はコメント解除して設定
+          # publish_branch: gh-pages # もし gh-pages ブランチにデプロイしたい場合
+                                    # (GitHub Pagesの設定で gh-pages branch を選ぶなら必要)
