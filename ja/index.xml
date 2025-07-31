@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tech Blog</title><link>https://example.org/ja/</link><description>Recent content on Tech Blog</description><generator>Hugo -- 0.148.2</generator><language>ja</language><lastBuildDate>Thu, 31 Jul 2025 10:51:01 +0900</lastBuildDate><atom:link href="https://example.org/ja/index.xml" rel="self" type="application/rss+xml"/><item><title>Mermaid</title><link>https://example.org/ja/posts/mermaid-example/</link><pubDate>Thu, 31 Jul 2025 10:51:01 +0900</pubDate><guid>https://example.org/ja/posts/mermaid-example/</guid><description>&lt;h3 id="1-フローチャート-flowchart">1. フローチャート (Flowchart)&lt;/h3>
+&lt;pre tabindex="0">&lt;code class="language-mermaid" data-lang="mermaid">graph TD
+A[Start] --&amp;gt; B{Choice};
+B -- Yes --&amp;gt; C[Process 1];
+B -- No --&amp;gt; D[Process 2];
+C --&amp;gt; E[End];
+D --&amp;gt; E;
+&lt;/code>&lt;/pre>&lt;pre class="mermaid">
+graph TD
+A[Start] --> B{Choice};
+B -- Yes --> C[Process 1];
+B -- No --> D[Process 2];
+C --> E[End];
+D --> E;
+&lt;/pre>
+&lt;hr>
+&lt;h3 id="2-シーケンス図-sequence-diagram">2. シーケンス図 (Sequence Diagram)&lt;/h3>
+&lt;pre tabindex="0">&lt;code class="language-mermaid" data-lang="mermaid">sequenceDiagram
+participant Alice
+participant Bob
+Alice-&amp;gt;&amp;gt;Bob: Hello Bob, how are you?
+Bob--&amp;gt;&amp;gt;Alice: I am good thanks!
+Alice-&amp;gt;&amp;gt;Bob: See you later.
+&lt;/code>&lt;/pre>&lt;pre class="mermaid">
+sequenceDiagram;
+participant Alice
+participant Bob
+Alice->>Bob: Hello Bob, how are you?
+Bob-->>Alice: I am good thanks!
+Alice->>Bob: See you later.
+&lt;/pre>
+&lt;hr>
+&lt;h3 id="3-ガントチャート-gantt-chart">3. ガントチャート (Gantt Chart)&lt;/h3>
+&lt;pre tabindex="0">&lt;code class="language-mermaid" data-lang="mermaid">gantt
+dateFormat YYYY-MM-DD
+title Project Schedule
+section Design
+Requirements Definition :a1, 2024-01-01, 7d
+System Design :a2, after a1, 5d
+section Development
+Frontend :b1, after a2, 10d
+Backend :b2, after a2, 12d
+section Testing
+Unit Testing :c1, after b1, 5d
+Integration Testing :c2, after b2, 7d
+&lt;/code>&lt;/pre>&lt;pre class="mermaid">
+gantt
+dateFormat YYYY-MM-DD
+title Project Schedule
+section Design
+Requirements Definition :a1, 2024-01-02, 1M
+System Design :a2, after a1, 5d
+section Development
+Frontend :b1, after a2, 10d
+Backend :b2, after a2, 12d
+section Testing
+Unit Testing :c1, after b1, 5d
+Integration Testing :c2, after b2, 7d
+&lt;/pre>
+&lt;hr>
+&lt;h3 id="4-クラス図-class-diagram">4. クラス図 (Class Diagram)&lt;/h3>
+&lt;pre tabindex="0">&lt;code class="language-mermaid" data-lang="mermaid">classDiagram
+Class01 &amp;lt;|--|&amp;gt; Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+Class11 &amp;lt;|-- Class12
+Class13 --&amp;gt; Class14
+Class15 ..&amp;gt; Class16
+class Animal {
++name: String
++age: int
++eat()
+}
+class Dog {
+-breed: String
++bark()
+}
+Animal &amp;lt;|-- Dog
+&lt;/code>&lt;/pre>&lt;hr>
+&lt;h3 id="5-ステート図-state-diagram">5. ステート図 (State Diagram)&lt;/h3>
+&lt;p>システムやオブジェクトの状態とその遷移を表現します。&lt;/p></description></item></channel></rss>
