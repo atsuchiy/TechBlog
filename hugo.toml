@@ -1,4 +1,21 @@
 baseURL = 'https://example.org/'
-languageCode = 'ja-jp'
 title = 'Tech Blog'
 theme = "hugo-PaperMod"
+hasCJKLanguage = true
+defaultContentLanguage = "ja"
+defaultContentLanguageInSubdir = true
+
+[params]
+    env = "production"
+    ShowCodeCopyButtons = true
+    comments = true
+
+[languages]
+  [languages.ja]
+    languageName = "Japanese"
+    weight = 1
+    contentDir = "content/ja"
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
