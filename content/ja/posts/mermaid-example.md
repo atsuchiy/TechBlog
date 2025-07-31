@@ -2,8 +2,9 @@
 date = '2025-07-31T10:51:01+09:00'
 draft = false
 title = 'Mermaid'
-tag = ['mermaid', 'diagram', 'visualization']
+tags = ['マーメイド', 'フローチャート', '図', '可視化']
 slug = 'mermaid-example'
+showToc = true
 +++
 
 ### 1\. フローチャート (Flowchart)

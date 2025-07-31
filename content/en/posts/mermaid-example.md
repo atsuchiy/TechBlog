@@ -2,7 +2,7 @@
 date = '2025-07-31T10:51:01+09:00'
 draft = false
 title = 'Mermaid'
-tag = ['mermaid', 'diagram', 'visualization']
+tags = ['mermaid', 'diagram', 'visualization']
 slug = 'mermaid-example'
 +++
 
