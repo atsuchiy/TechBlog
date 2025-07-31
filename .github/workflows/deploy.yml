@@ -4,32 +4,44 @@ on:
   push:
     branches:
       - main # mainブランチへのプッシュでデプロイをトリガー
+  workflow_dispatch: # 手動実行を可能にする (オプション)
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest # ビルドを実行する環境
+  build: # まずはビルドジョブ
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: true # テーマをサブモジュールとして追加している場合
-          fetch-depth: 0    # .GitInfo を使用する場合
+          submodules: true
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest' # 最新のHugoバージョンを使用
-          extended: true         # Hugo Extended版が必要な場合 (Sassなど)
+          hugo-version: 'latest'
+          extended: true
 
       - name: Build Hugo site
-        run: hugo --minify # Hugoサイトをビルド (--minifyで最適化)
+        run: hugo --minify
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3 # GitHub Pagesにデプロイするアクション
-        if: github.ref == 'refs/heads/main' # mainブランチでのみデプロイを実行
+      - name: Upload artifact # ビルド成果物を保存
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub提供のトークン
-          publish_dir: ./public # Hugoのビルド成果物があるディレクトリ
-          # cname: yourdomain.com # カスタムドメインを使う場合はコメント解除して設定
-          # publish_branch: gh-pages # もし gh-pages ブランチにデプロイしたい場合
-                                    # (GitHub Pagesの設定で gh-pages branch を選ぶなら必要)
+          path: ./public
+
+  deploy: # デプロイジョブ (環境の承認を必要とする)
+    runs-on: ubuntu-latest
+    needs: build # build ジョブの完了を待つ
+    environment:
+      name: github-pages # GitHub Pages 環境を指定
+      url: ${{ steps.deployment.outputs.page_url }} # デプロイ後のURL
+
+    permissions:
+      pages: write # GitHub Pagesへの書き込み権限
+      id-token: write # OpenID Connect (OIDC) トークンの発行権限
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # GitHub Pages専用のデプロイアクション
